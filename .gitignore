@@ -1,0 +1,6 @@
+.vite/
+.vercel/
+node_modules/
+Thumbs.db
+desktop.ini
+.DS_Store
