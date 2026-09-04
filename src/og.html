@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=IBM+Plex+Mono:wght@400;500&family=Tajawal:wght@500;700;800&display=swap">
+<title>og card</title>
+<style>
+  /* Social preview card — rendered to og.png at exactly 1200x630 by
+     tools/make-og.sh. Palette is copied from the site's dark theme so the
+     card and the page it links to read as one thing. */
+  :root {
+    --bg:          #080F12;
+    --bg-2:        #0E1A1E;
+    --fg:          #ECE7DC;
+    --fg-2:        #AFBBBD;
+    --fg-3:        #77898D;
+    --accent:      #E0B15F;
+    --accent-2:    #F2CB85;
+    --accent-line: rgba(224, 177, 95, 0.34);
+    --patina:      #56A796;
+    --line:        rgba(226, 214, 190, 0.15);
+    --grid:        rgba(226, 214, 190, 0.045);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* Both html and body must clip. The bloom sits at a negative offset, and in
+     an RTL document that overflow extends the scroll canvas leftward — Chrome
+     then screenshots from the extended origin and the card comes out shifted
+     with its right edge cut off. Clipping the viewport element prevents it. */
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Tajawal", system-ui, sans-serif;
+    position: relative;
+  }
+
+  /* Drafting paper: a 40px grid with a heavier line every 200px, plus a warm
+     bloom behind the mark so the brass has something to sit in. */
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+      linear-gradient(rgba(226,214,190,0.075) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(226,214,190,0.075) 1px, transparent 1px);
+    background-size: 40px 40px, 40px 40px, 200px 200px, 200px 200px;
+  }
+  .bloom {
+    position: absolute;
+    width: 720px; height: 720px;
+    left: -160px; top: -190px;
+    background: radial-gradient(circle, rgba(224,177,95,0.13) 0%, rgba(224,177,95,0) 68%);
+  }
+
+  /* Registration marks, one per corner — the drawing-sheet tell. */
+  .reg { position: absolute; width: 26px; height: 26px; }
+  .reg::before, .reg::after {
+    content: ""; position: absolute; background: var(--accent-line);
+  }
+  .reg::before { width: 26px; height: 1.5px; top: 0; }
+  .reg::after  { width: 1.5px; height: 26px; left: 0; }
+  .reg.tl { top: 40px; left: 40px; }
+  .reg.tr { top: 40px; right: 40px; }
+  .reg.tr::after { left: auto; right: 0; }
+  .reg.bl { bottom: 40px; left: 40px; }
+  .reg.bl::before { top: auto; bottom: 0; }
+  .reg.br { bottom: 40px; right: 40px; }
+  .reg.br::before { top: auto; bottom: 0; }
+  .reg.br::after  { left: auto; right: 0; }
+
+  .sheet {
+    position: relative;
+    height: 100%;
+    padding: 84px 96px 76px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-content: space-between;
+    gap: 0 56px;
+  }
+
+  /* ---- masthead ---------------------------------------------------- */
+  .top { grid-column: 1 / -1; display: flex; align-items: center; gap: 20px; }
+  .wordmark {
+    font-family: "Archivo", sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    letter-spacing: 0.16em;
+    color: var(--fg);
+  }
+  .wordmark .ar { font-family: "Tajawal", sans-serif; letter-spacing: 0; margin-inline-start: 12px; }
+  .rule { flex: 1; height: 1px; background: var(--line); }
+  .place {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 15px;
+    letter-spacing: 0.13em;
+    color: var(--fg-3);
+    white-space: nowrap;
+  }
+
+  /* ---- headline ---------------------------------------------------- */
+  .body { align-self: center; padding-block: 8px; }
+  h1 {
+    font-weight: 800;
+    font-size: 74px;
+    line-height: 1.22;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+  h1 .lit { color: var(--accent); }
+  .sub {
+    margin-top: 28px;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--fg-2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .sub span { display: flex; align-items: baseline; }
+  .sub .dot {
+    color: var(--accent);
+    font-style: normal;
+    margin-inline-end: 14px;
+    font-size: 30px;
+    line-height: 1;
+  }
+
+  /* ---- brass mark -------------------------------------------------- */
+  .mark { align-self: center; }
+
+  /* ---- footer: dimension line + domain ----------------------------- */
+  .bottom { grid-column: 1 / -1; display: flex; align-items: flex-end; gap: 40px; }
+  .dim { flex: 1; }
+  .dim__line { position: relative; height: 26px; }
+  .dim__line::before {
+    content: ""; position: absolute; top: 12px; left: 8px; right: 8px;
+    height: 1.5px; background: var(--accent-line);
+  }
+  .dim__cap {
+    position: absolute; top: 3px; width: 1.5px; height: 20px; background: var(--accent);
+  }
+  .dim__cap.a { left: 8px; }
+  .dim__cap.b { right: 8px; }
+  .dim__ticks { display: flex; justify-content: space-between; padding: 0 8px; margin-top: 2px; }
+  .dim__ticks span {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--fg-3);
+  }
+  .domain {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--accent-2);
+    direction: ltr;
+    white-space: nowrap;
+    padding-bottom: 2px;
+  }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="bloom"></div>
+  <span class="reg tl"></span><span class="reg tr"></span>
+  <span class="reg bl"></span><span class="reg br"></span>
+
+  <div class="sheet">
+    <header class="top">
+      <span class="wordmark">BU&rsquo;D<span class="ar">بُعد</span></span>
+      <span class="rule"></span>
+      <span class="place">TABUK &middot; SA</span>
+    </header>
+
+    <div class="body">
+      <h1>نبني البُعد <span class="lit">الناقص</span> في أعمالك.</h1>
+      <!-- Two explicit lines. Left to wrap on its own the phrase orphans
+           "أفلام" at the end of line one, splitting it from "تسويقية". -->
+      <p class="sub">
+        <span><i class="dot">&middot;</i>تطبيقات ويب وجوال جاهزة للتشغيل</span>
+        <span><i class="dot">&middot;</i>أفلام تسويقية بالذكاء الاصطناعي</span>
+      </p>
+    </div>
+
+    <!-- The dimension mark from the favicon, drawn large: an isometric plate
+         with its two side extension lines. -->
+    <svg class="mark" width="310" height="310" viewBox="0 0 32 32" fill="none"
+         stroke="#E0B15F" stroke-width="1.15" stroke-linejoin="round" stroke-linecap="round"
+         aria-hidden="true">
+      <path d="M6 12l10-5 10 5-10 5z" fill="rgba(224,177,95,0.10)"/>
+      <path d="M6 17l10 5 10-5"/>
+      <path d="M6 12v5"/>
+      <path d="M26 12v5"/>
+      <path d="M16 12v10" stroke="#56A796" stroke-width="0.7" opacity="0.85"/>
+    </svg>
+
+    <footer class="bottom">
+      <div class="dim">
+        <div class="dim__line">
+          <span class="dim__cap a"></span>
+          <span class="dim__cap b"></span>
+        </div>
+        <div class="dim__ticks">
+          <span>&#x0662;&#x0660;&#x0662;&#x0666;</span>
+          <span>&#x0623;&#x0643;&#x062B;&#x0631; &#x0645;&#x0646; &#x0661;&#x0660;&#x0660; &#x0645;&#x064A;&#x0632;&#x0629; &#x062C;&#x0627;&#x0647;&#x0632;&#x0629;</span>
+        </div>
+      </div>
+      <span class="domain">bud-co.com</span>
+    </footer>
+  </div>
+</body>
+</html>
