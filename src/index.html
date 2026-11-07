@@ -203,6 +203,7 @@ svg { display: block; }
 
 .nav { display: flex; gap: 0.125rem; margin-inline-start: auto; }
 .nav__link {
+  display: inline-block; text-decoration: none;
   font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--fg-3); padding: 0.5rem 0.6875rem; border: 1px solid transparent; cursor: pointer; background: none;
   transition: color 0.18s var(--ease), border-color 0.18s var(--ease);
@@ -233,6 +234,7 @@ svg { display: block; }
 
 /* --- buttons ------------------------------------------------------------- */
 .btn {
+  text-decoration: none;
   display: inline-flex; align-items: center; gap: 0.625rem;
   font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
   padding: 0.9375rem 1.4375rem; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink);
@@ -617,20 +619,20 @@ mark { background: var(--accent-dim); color: var(--accent); padding: 0 2px; bord
      ===================================================================== -->
 <header class="head">
   <div class="head__in">
-    <button class="brand" data-go="home" aria-label="Bu'd — home">
+    <a href="/" class="brand" aria-label="Bu'd — home">
       <span class="brand__mark">BU<i>&#39;</i>D</span>
       <span class="brand__ar">بُعد</span>
-    </button>
+    </a>
 
     <button class="chip-btn burger" id="burger" aria-expanded="false" aria-controls="nav"
             data-en="Menu" data-ar="القائمة">القائمة</button>
 
     <nav class="nav" id="nav">
-      <button class="nav__link" data-go="home"    data-en="Home"          data-ar="الرئيسية">الرئيسية</button>
-      <button class="nav__link" data-go="apps"    data-en="App Studio"    data-ar="تطوير التطبيقات">تطوير التطبيقات</button>
-      <button class="nav__link" data-go="film"    data-en="AI Film"       data-ar="أفلام الذكاء الاصطناعي">أفلام الذكاء الاصطناعي</button>
-      <button class="nav__link" data-go="catalog" data-en="Capabilities"  data-ar="الإمكانات">الإمكانات</button>
-      <button class="nav__link" data-go="brief"   data-en="Start a Brief" data-ar="ابدأ طلبك">ابدأ طلبك</button>
+      <a href="/" class="nav__link"    data-en="Home"          data-ar="الرئيسية">الرئيسية</a>
+      <a href="/apps/" class="nav__link"    data-en="App Studio"    data-ar="تطوير التطبيقات">تطوير التطبيقات</a>
+      <a href="/film/" class="nav__link"    data-en="AI Film"       data-ar="أفلام الذكاء الاصطناعي">أفلام الذكاء الاصطناعي</a>
+      <a href="/catalog/" class="nav__link" data-en="Capabilities"  data-ar="الإمكانات">الإمكانات</a>
+      <a href="/brief/" class="nav__link"   data-en="Start a Brief" data-ar="ابدأ طلبك">ابدأ طلبك</a>
     </nav>
 
     <div class="head__tools">
@@ -664,12 +666,12 @@ mark { background: var(--accent-dim); color: var(--accent); padding: 0 2px; bord
            data-ar="بُعد يصمم ويطلق برمجيات جاهزة للتشغيل — تطبيقات حقيقية بقواعد بيانات حقيقية تدير عملك فعليًا — إضافة إلى أفلام تسويقية بالذكاء الاصطناعي تروّج لها. ستوديو واحد، من أول رسم حتى متجر التطبيقات."></p>
 
         <div class="hero__cta" style="margin-top:2rem">
-          <button class="btn" data-go="brief">
+          <a href="/brief/" class="btn">
             <span data-en="Start a brief" data-ar="ابدأ طلبك">Start a brief</span>
             <span class="btn__arrow" aria-hidden="true">&rarr;</span>
-          </button>
-          <button class="btn btn--ghost" data-go="catalog"
-                  data-en="See what we can build" data-ar="اطّلع على ما نبنيه">See what we can build</button>
+          </a>
+          <a href="/catalog/" class="btn btn--ghost"
+                  data-en="See what we can build" data-ar="اطّلع على ما نبنيه">See what we can build</a>
         </div>
 
         <div class="hero__meta">
@@ -727,7 +729,7 @@ mark { background: var(--accent-dim); color: var(--accent); padding: 0 2px; bord
       <div class="hairgrid hairgrid--2">
         <article class="svc">
           <p class="svc__num">A</p>
-          <h3 class="h-md" data-en="App Studio" data-ar="ستوديو التطبيقات">App Studio</h3>
+          <h3 class="h-md" data-en="Mobile &amp; web app development" data-ar="تطوير تطبيقات الجوال والويب">App Studio</h3>
           <p style="color:var(--fg-2)"
              data-en="Custom web and mobile apps for clinics, restaurants, hotels, workshops, rental fleets and wholesalers. Postgres underneath, live sync across every device, Arabic-first interfaces, and role-separated views for customers, staff and owners."
              data-ar="تطبيقات ويب وجوال مخصصة للعيادات والمطاعم والفنادق والورش وأساطيل التأجير وتجار الجملة. قاعدة بيانات Postgres، ومزامنة لحظية عبر كل الأجهزة، وواجهات عربية أولًا، وشاشات منفصلة لكل دور: العميل والموظف والمالك."></p>
@@ -736,15 +738,15 @@ mark { background: var(--accent-dim); color: var(--accent); padding: 0 2px; bord
             <li data-en="Build, test and launch on web, iOS and Android" data-ar="التطوير والاختبار والإطلاق على الويب و iOS و Android"></li>
             <li data-en="Payments, ZATCA e-invoicing and staff training" data-ar="المدفوعات وفوترة هيئة الزكاة والضريبة وتدريب الفريق"></li>
           </ul>
-          <button class="btn btn--ghost btn--sm" data-go="apps" style="align-self:flex-start">
+          <a href="/apps/" class="btn btn--ghost btn--sm" style="align-self:flex-start">
             <span data-en="App Studio" data-ar="تفاصيل الستوديو">App Studio</span>
             <span class="btn__arrow" aria-hidden="true">&rarr;</span>
-          </button>
+          </a>
         </article>
 
         <article class="svc">
           <p class="svc__num">B</p>
-          <h3 class="h-md" data-en="AI Film" data-ar="أفلام الذكاء الاصطناعي">AI Film</h3>
+          <h3 class="h-md" data-en="AI marketing films" data-ar="أفلام تسويقية بالذكاء الاصطناعي">AI Film</h3>
           <p style="color:var(--fg-2)"
              data-en="Marketing video generated with AI models and finished by hand: vertical ads, product reels, creator-style testimonials, explainers and brand films. Arabic voiceover, burned subtitles, and every aspect ratio your channels need."
              data-ar="فيديو تسويقي يُنتج بنماذج الذكاء الاصطناعي ويُنهى يدويًا: إعلانات عمودية، ريلز للمنتجات، شهادات بأسلوب صنّاع المحتوى، فيديوهات شرح، وأفلام هوية. تعليق صوتي عربي، وترجمة مدمجة، وكل المقاسات التي تحتاجها قنواتك."></p>
@@ -753,10 +755,10 @@ mark { background: var(--accent-dim); color: var(--accent); padding: 0 2px; bord
             <li data-en="9:16, 1:1 and 16:9 cuts from one shoot concept" data-ar="نسخ ٩:١٦ و ١:١ و ١٦:٩ من فكرة واحدة"></li>
             <li data-en="Monthly content retainers for always-on channels" data-ar="عقود شهرية لتغذية القنوات باستمرار"></li>
           </ul>
-          <button class="btn btn--ghost btn--sm" data-go="film" style="align-self:flex-start">
+          <a href="/film/" class="btn btn--ghost btn--sm" style="align-self:flex-start">
             <span data-en="AI Film" data-ar="تفاصيل الأفلام">AI Film</span>
             <span class="btn__arrow" aria-hidden="true">&rarr;</span>
-          </button>
+          </a>
         </article>
       </div>
     </div>
@@ -887,10 +889,10 @@ mark { background: var(--accent-dim); color: var(--accent); padding: 0 2px; bord
           <p class="roi__note"
              data-en="Assumes an 8-hour day, 26 working days a month, that software removes about 60% of manual admin time, and that 1.5% of order value is currently lost to mistakes and missed items. These are our planning assumptions, not a promise — we test them against your real numbers during discovery."
              data-ar="يفترض الحساب يوم عمل ٨ ساعات، و٢٦ يوم عمل شهريًا، وأن البرنامج يلغي نحو ٦٠٪ من وقت العمل الإداري اليدوي، وأن ١٫٥٪ من قيمة الطلبات تُفقد حاليًا بسبب الأخطاء والطلبات الضائعة. هذه افتراضات تخطيط لدينا وليست وعدًا — نختبرها على أرقامك الحقيقية في مرحلة الاستكشاف."></p>
-          <button class="btn btn--sm" data-go="brief" style="align-self:flex-start">
+          <a href="/brief/" class="btn btn--sm" style="align-self:flex-start">
             <span data-en="Get this priced properly" data-ar="اطلب تسعيرًا دقيقًا">Get this priced properly</span>
             <span class="btn__arrow" aria-hidden="true">&rarr;</span>
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -906,10 +908,10 @@ mark { background: var(--accent-dim); color: var(--accent); padding: 0 2px; bord
         <p class="lede" data-en="The brief takes about eight minutes. Pick your features from the shelf, describe your operation, and we will come back with a fixed price and a timeline."
            data-ar="يستغرق الطلب ثماني دقائق تقريبًا. اختر ميزاتك من القائمة، وصِف طبيعة عملك، وسنعود إليك بسعر ثابت وجدول زمني."></p>
       </div>
-      <button class="btn" data-go="brief">
+      <a href="/brief/" class="btn">
         <span data-en="Open the brief" data-ar="افتح نموذج الطلب">Open the brief</span>
         <span class="btn__arrow" aria-hidden="true">&rarr;</span>
-      </button>
+      </a>
     </div>
   </div>
 </section>
@@ -924,15 +926,15 @@ mark { background: var(--accent-dim); color: var(--accent); padding: 0 2px; bord
       <div>
         <p class="eyebrow"><span data-en="Discipline A" data-ar="التخصص أ">التخصص أ</span></p>
         <h1 class="h-xl" style="margin-block:1.25rem 1.25rem"
-            data-en="App Studio" data-ar="ستوديو التطبيقات"></h1>
+            data-en="Mobile &amp; web app development" data-ar="تطوير تطبيقات الجوال والويب"></h1>
         <p class="lede"
            data-en="Most business software fails because it was built for a business that is not yours. We start from your actual counter, your actual kitchen, your actual reception desk — then build the software around it."
            data-ar="معظم برمجيات الأعمال تفشل لأنها بُنيت لنشاط ليس نشاطك. نبدأ من كاونترك الفعلي، ومطبخك الفعلي، ومكتب استقبالك الفعلي — ثم نبني البرنامج حولها."></p>
         <div class="hero__cta" style="margin-top:2rem">
-          <button class="btn" data-go="brief">
+          <a href="/brief/" class="btn">
             <span data-en="Start a brief" data-ar="ابدأ طلبك">ابدأ طلبك</span>
             <span class="btn__arrow" aria-hidden="true">&rarr;</span>
-          </button>
+          </a>
         </div>
       </div>
       <figure class="hero__art stage" data-scene="lattice" style="margin:0">
@@ -1017,15 +1019,15 @@ mark { background: var(--accent-dim); color: var(--accent); padding: 0 2px; bord
       <div>
         <p class="eyebrow"><span data-en="Discipline B" data-ar="التخصص ب">التخصص ب</span></p>
         <h1 class="h-xl" style="margin-block:1.25rem 1.25rem"
-            data-en="AI Film" data-ar="أفلام الذكاء الاصطناعي"></h1>
+            data-en="AI marketing films" data-ar="أفلام تسويقية بالذكاء الاصطناعي"></h1>
         <p class="lede"
            data-en="A film crew costs weeks and a location. AI generation costs an afternoon — but only if someone writes the script, directs the shots and cuts it properly. We do all three, then generate."
            data-ar="طاقم التصوير يكلّف أسابيع وموقعًا. التوليد بالذكاء الاصطناعي يكلّف بعد ظهر واحد — بشرط أن يكتب أحدهم النص، ويُخرج اللقطات، ويركّبها كما ينبغي. نقوم بالثلاثة، ثم نولّد."></p>
         <div class="hero__cta" style="margin-top:2rem">
-          <button class="btn" data-go="brief">
+          <a href="/brief/" class="btn">
             <span data-en="Brief a campaign" data-ar="اطلب حملة">اطلب حملة</span>
             <span class="btn__arrow" aria-hidden="true">&rarr;</span>
-          </button>
+          </a>
         </div>
       </div>
       <figure class="hero__art stage" data-scene="frames" style="margin:0">
@@ -1082,15 +1084,15 @@ mark { background: var(--accent-dim); color: var(--accent); padding: 0 2px; bord
     <div class="wrap">
       <p class="eyebrow"><span data-en="The shelf" data-ar="القائمة">The shelf</span></p>
       <h1 class="h-xl" style="margin-block:1.25rem 1.25rem"
-          data-en="Capabilities" data-ar="الإمكانات"></h1>
+          data-en="Capabilities for your app" data-ar="إمكانات جاهزة لتطبيقك"></h1>
       <p class="lede" data-featcount
          data-en="All {n} of these can be built into your app. Some are already written and tested, so they drop in cheaply; some need a third-party account in your name. Search the shelf, then take your picks to the brief."
          data-ar="كل هذه الميزات، وعددها {n}، يمكن دمجها في تطبيقك. بعضها مكتوب ومختبر مسبقًا فيُضاف بتكلفة أقل؛ وبعضها يتطلب حسابًا لدى طرف ثالث باسمك. ابحث في القائمة، ثم انقل اختياراتك إلى نموذج الطلب."></p>
       <div style="margin-block-start:1.75rem">
-        <button class="btn" data-go="brief">
+        <a href="/brief/" class="btn">
           <span data-en="Pick features in the brief" data-ar="اختر الميزات في النموذج">Pick features in the brief</span>
           <span class="btn__arrow" aria-hidden="true">&rarr;</span>
-        </button>
+        </a>
       </div>
     </div>
   </div>
@@ -1121,7 +1123,7 @@ mark { background: var(--accent-dim); color: var(--accent); padding: 0 2px; bord
     <div class="wrap">
       <p class="eyebrow"><span data-en="Project brief" data-ar="نموذج الطلب">Project brief</span></p>
       <h1 class="h-xl" style="margin-block:1.25rem 1.25rem"
-          data-en="Start a brief" data-ar="ابدأ طلبك"></h1>
+          data-en="Request an app quote" data-ar="اطلب عرض سعر تطبيقك"></h1>
       <p class="lede"
          data-en="Fill in what you know and skip what you do not — nothing here is a commitment. When you are done, the brief compiles into a document you can send us on WhatsApp, by email, or download and keep."
          data-ar="املأ ما تعرفه وتجاوز ما لا تعرفه — لا شيء هنا التزام. عند الانتهاء، يتجمّع الطلب في وثيقة ترسلها لنا عبر واتساب أو البريد، أو تنزّلها وتحتفظ بها."></p>
@@ -1374,10 +1376,10 @@ mark { background: var(--accent-dim); color: var(--accent); padding: 0 2px; bord
       </div>
       <div class="foot__col">
         <h4 data-en="Services" data-ar="الخدمات">Services</h4>
-        <a data-go="apps" data-en="App Studio" data-ar="ستوديو التطبيقات">App Studio</a>
-        <a data-go="film" data-en="AI Film" data-ar="أفلام الذكاء الاصطناعي">AI Film</a>
-        <a data-go="catalog" data-en="Capabilities" data-ar="الإمكانات">Capabilities</a>
-        <a data-go="brief" data-en="Start a brief" data-ar="ابدأ طلبك">Start a brief</a>
+        <a href="/apps/"  data-en="App Studio" data-ar="ستوديو التطبيقات">App Studio</a>
+        <a href="/film/"  data-en="AI Film" data-ar="أفلام الذكاء الاصطناعي">AI Film</a>
+        <a href="/catalog/"  data-en="Capabilities" data-ar="الإمكانات">Capabilities</a>
+        <a href="/brief/"  data-en="Start a brief" data-ar="ابدأ طلبك">Start a brief</a>
       </div>
       <div class="foot__col">
         <h4 data-en="Contact" data-ar="تواصل">تواصل</h4>
@@ -1776,34 +1778,8 @@ var FILM_DELIVER = [
 /* ===========================================================================
    4 · ROUTER
    =========================================================================== */
-var VIEWS = ["home", "apps", "film", "catalog", "brief"];
-var currentView = "home";
 
-function go(view, opts) {
-  if (VIEWS.indexOf(view) === -1) view = "home";
-  currentView = view;
-  VIEWS.forEach(function (v) {
-    var el = document.getElementById("view-" + v);
-    if (el) el.classList.toggle("is-active", v === view);
-  });
-  document.querySelectorAll(".nav__link").forEach(function (b) {
-    if (b.getAttribute("data-go") === view) b.setAttribute("aria-current", "page");
-    else b.removeAttribute("aria-current");
-  });
-  document.getElementById("nav").classList.remove("is-open");
-  document.getElementById("burger").setAttribute("aria-expanded", "false");
-  if (!opts || !opts.keepScroll) window.scrollTo({ top: 0, behavior: "instant" });
-  try { history.replaceState(null, "", "#" + view); } catch (e) {}
-  Stage.refresh();
-  observeReveals();
-}
 
-document.addEventListener("click", function (e) {
-  var t = e.target.closest("[data-go]");
-  if (!t) return;
-  e.preventDefault();
-  go(t.getAttribute("data-go"));
-});
 
 /* ===========================================================================
    5 · CATALOG RENDERING
@@ -2755,6 +2731,15 @@ function observeReveals() {
 /* ===========================================================================
    11 · WIRING
    =========================================================================== */
+/* Each page ships only the markup for its own view, so an id that exists on
+   /catalog/ is legitimately absent on /film/. Binding through on() keeps a
+   missing node from throwing and taking the rest of init() down with it. */
+function on(id, ev, fn, opts) {
+  var el = document.getElementById(id);
+  if (el) el.addEventListener(ev, fn, opts);
+  return el;
+}
+
 function init() {
   applyLang();
   // The shelf size is whatever the catalog actually holds — never a stale number.
@@ -2777,10 +2762,10 @@ function init() {
   updateSummary();
 
   // language + theme
-  document.getElementById("lang").addEventListener("click", function () {
+  on("lang", "click", function () {
     setLang(LANG === "ar" ? "en" : "ar");
   });
-  document.getElementById("theme").addEventListener("click", function () {
+  on("theme", "click", function () {
     var r = document.documentElement;
     var cur = r.getAttribute("data-theme");
     if (!cur) cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -2791,7 +2776,7 @@ function init() {
   });
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { Stage.repaint(); });
 
-  document.getElementById("burger").addEventListener("click", function () {
+  on("burger", "click", function () {
     var nav = document.getElementById("nav");
     var open = nav.classList.toggle("is-open");
     this.setAttribute("aria-expanded", String(open));
@@ -2812,8 +2797,7 @@ function init() {
   var ps = document.getElementById("pickSearch");
   if (ps) ps.addEventListener("input", function () { pickQuery = this.value; renderPicker(); });
 
-  var pb = document.getElementById("pickBody");
-  pb.addEventListener("click", function (e) {
+  on("pickBody", "click", function (e) {
     var head = e.target.closest(".pick-group__head");
     if (!head) return;
     var g = head.closest(".pick-group");
@@ -2821,7 +2805,7 @@ function init() {
     openGroups[id] = g.getAttribute("data-open") !== "true";
     g.setAttribute("data-open", String(openGroups[id]));
   });
-  pb.addEventListener("change", function (e) {
+  on("pickBody", "change", function (e) {
     var cb = e.target.closest('input[type="checkbox"]');
     if (!cb) return;
     if (cb.checked) picks.add(cb.value); else picks.delete(cb.value);
@@ -2840,13 +2824,13 @@ function init() {
     updateSummary();
   });
 
-  document.getElementById("expandAll").addEventListener("click", function () {
+  on("expandAll", "click", function () {
     var allOpen = Object.keys(openGroups).length && CATALOG.every(function (g) { return openGroups[g.id]; });
     CATALOG.forEach(function (g) { openGroups[g.id] = !allOpen; });
     this.textContent = allOpen ? T("فتح الكل", "Open all") : T("طيّ الكل", "Close all");
     renderPicker();
   });
-  document.getElementById("clearPicks").addEventListener("click", function () {
+  on("clearPicks", "click", function () {
     picks.clear(); renderPicker(); updateSummary();
     toast(T("مُسحت كل الاختيارات", "All picks cleared"));
   });
@@ -2865,17 +2849,16 @@ function init() {
     CATALOG.forEach(function (g) { openGroups[g.id] = g.items.some(function (it) { return picks.has(it.id); }); });
     renderPicker();
     updateSummary();
-    go("brief");
+    saveBrief();              // persist before leaving the page
+    window.location.href = "/brief/";
     toast(T("جهّزنا لك " + s.picks.length + " ميزة — عدّلها كما تشاء",
             s.picks.length + " features preset — change anything"));
   });
 
   // form inputs
-  var form = document.getElementById("briefForm");
-  form.addEventListener("input", updateSummary);
-  form.addEventListener("change", updateSummary);
-
-  form.addEventListener("submit", function (e) {
+  on("briefForm", "input", updateSummary);
+  on("briefForm", "change", updateSummary);
+  on("briefForm", "submit", function (e) {
     e.preventDefault();
     var miss = requiredOK();
     var err = document.getElementById("formErr");
@@ -2896,7 +2879,7 @@ function init() {
     out.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
-  document.getElementById("sendWa").addEventListener("click", function () {
+  on("sendWa", "click", function () {
     var full = document.getElementById("outText").textContent;
     var summary = compileBrief(true);
     var link = waLink(summary);
@@ -2911,7 +2894,7 @@ function init() {
       }, function () { open(); });
     } else { open(); }
   });
-  document.getElementById("sendMail").addEventListener("click", function () {
+  on("sendMail", "click", function () {
     // mailto: is capped near 2048 characters on Windows and Outlook, so the
     // summary goes in the body and the full spec goes to the clipboard.
     var full = document.getElementById("outText").textContent;
@@ -2925,7 +2908,7 @@ function init() {
       }, function () { go(); });
     } else { go(); }
   });
-  document.getElementById("copyBrief").addEventListener("click", function () {
+  on("copyBrief", "click", function () {
     var text = document.getElementById("outText").textContent;
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text).then(function () {
@@ -2933,7 +2916,7 @@ function init() {
       }, function () { toast(T("تعذّر النسخ", "Copy failed")); });
     }
   });
-  document.getElementById("resetBrief").addEventListener("click", function () {
+  on("resetBrief", "click", function () {
     if (!confirm(T("سيُمسح كل ما أدخلته. متأكد؟", "This clears everything you entered. Sure?"))) return;
     picks.clear();
     try { localStorage.removeItem("bud.brief"); } catch (e) {}
@@ -2961,7 +2944,7 @@ function init() {
   // is NOT spam protection — the address is still in the page source below.
   var fm = document.getElementById("footMail");
   if (fm) { fm.href = "mailto:" + CONFIG.email; fm.textContent = CONFIG.email; }
-  document.getElementById("fab").addEventListener("click", function () {
+  on("fab", "click", function () {
     window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" +
       encodeURIComponent(T("السلام عليكم، عندي استفسار عن تطوير تطبيق.",
                            "Hello, I have a question about building an app.")), "_blank", "noopener");
@@ -2971,10 +2954,12 @@ function init() {
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
   observeReveals();
-  Stage.init();
+  // The 3D stages drive a requestAnimationFrame loop that never ends, which
+  // stalls headless Chrome's virtual clock and hangs the prerender. The
+  // scenes are decorative and are not wanted in the baked markup anyway, so
+  // tools/prerender.js requests each page with this flag to skip them.
+  if (!/[?&]prerender=1(?:&|$)/.test(location.search)) Stage.init();
 
-  var h = (location.hash || "").replace("#", "");
-  if (VIEWS.indexOf(h) !== -1) go(h);
 }
 
 function claudeDownloads() {

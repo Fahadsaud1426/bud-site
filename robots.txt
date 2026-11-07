@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bud-co.com/sitemap.xml
